@@ -20,6 +20,7 @@ spec:
         release: {{ .Release.Name }}
       {{- if or .Values.podAnnotations .Values.prometheus.jmx.enabled }}
       annotations:
+        linkerd.io/inject: disabled
       {{- range $key, $value := .Values.podAnnotations }}
         {{ $key }}: {{ $value | quote }}
       {{- end }}
